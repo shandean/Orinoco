@@ -1,0 +1,72 @@
+.body-colour{
+  background-color:$yellow-200;
+}
+a{
+  text-decoration: none;
+}
+.text-1{
+  font-family: 'Special Elite', cursive;
+}
+.poem{
+  color: $blue;
+}
+.hover-card{
+  transition: all .2s ease-in-out; 
+  &:hover{
+     transform: scale(1.1); 
+  }
+}
+p .desc{
+  font-size: 90px;
+}
+.card-img-top{
+  height: 227px;
+}
+.col-md-4{
+  margin-bottom: 2rem;
+}
+.icon-md {
+  font-size: 30px!important;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  margin: auto auto auto auto;
+}
+.bgc-dark-slate-blue {
+  background-color: #364577;
+}
+.d-bloc{
+  color: rgba(255,255,255,.7);
+}
+.bloc {
+  width: 100%;
+  clear: both;
+  background: 50% 50% no-repeat;
+  padding: 0 50px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+@media screen and (max-width:768px) {
+  .row{
+    display: flex;
+    flex-direction: column;
+  }
+  .col-md-4{ 
+    width: 55%;
+    margin: 0 auto;
+  }
+  .h-40{
+    margin-bottom: 2rem;
+  }
+}
+@media screen and (max-width:425px){
+  .col-md-4{ 
+    width: 60rem;
+  }
+}
