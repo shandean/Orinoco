@@ -1,4 +1,4 @@
-.big-image {
+.cardImage {
     height: 100%;
     img {
         width: 100%;
@@ -32,6 +32,7 @@
         text-decoration: none;
     }
 }
+
 .confirme-feedback--visible {
 top: 20px;
 opacity: 1;
@@ -46,22 +47,28 @@ visibility: visible;
     font-size: 1.4rem;
     font-weight: bold;
 }
+
 .desc {
 font-size: 18px;
 font-weight: 200;
 margin-bottom: 20px;
 }
+
 .blue{
     color:$blue;
 }
 .checked{
     color:$yellow;
 }
+
 select {
-    font-size: 14px;
+    font-size: 16px;
+    padding: 2px 5px;
 }
+
 label {
     flex-direction: column nowrap;
     flex-wrap: nowrap;
-    font-size: 16px;
+    font-size: 18px;
+    padding-right: 10px;
 }
