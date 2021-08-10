@@ -11701,20 +11701,6 @@ label {
   text-shadow: 1px 1px 2px #427388;
 }
 
-.details {
-  border: 1.5px solid grey;
-  -webkit-box-shadow: 0px 0px 3px #212121;
-          box-shadow: 0px 0px 3px #212121;
-  color: #212121;
-  height: auto;
-  width: 100%;
-}
-
-.details:hover {
-  -webkit-box-shadow: 0px 0px 10px rgba(255, 5, 201, 0.733);
-          box-shadow: 0px 0px 10px rgba(255, 5, 201, 0.733);
-}
-
 .form-control::-webkit-input-placeholder {
   font-size: 0.95rem;
   color: #aaa;
@@ -11744,16 +11730,7 @@ label {
           box-shadow: none;
 }
 
-.img-thumbnail {
-  border: none;
-}
-
-.mt-100 {
-  margin-top: 100px;
-}
-
-.productCard:hover {
-  -webkit-box-shadow: 0px 0px 10px #212121;
-          box-shadow: 0px 0px 10px #212121;
+ins {
+  background-color: #d4fcbc;
 }
 /*# sourceMappingURL=style.css.map */

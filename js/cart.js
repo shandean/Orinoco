@@ -83,7 +83,7 @@ function displayCart() {
 
             let item = document.createElement('div');
             item.classList.add('w-50');
-            item.innerHTML = '<p class="my-0">' + cartItemsArray[i].name + '</p> <small class="text-primary">' + cartItemsArray[i].colors + '</small>';
+            item.innerHTML = '<p class="my-0">' + cartItemsArray[i].name + '</p> <p class="text-primary"><small>' + cartItemsArray[i].colors + '</small></p>';
 
             let cost = document.createElement('div');
             cost.classList.add('w-25');
@@ -122,7 +122,6 @@ function updateCartTotal() {
         totalCost += cartItemsArray[i].price / 100;
     }
     total.innerHTML = '$' + totalCost;
-
     sessionStorage.setItem('price', totalCost);
 }
 
