@@ -41,17 +41,6 @@ async function getProducts() {
   }
 }
 
-// cart-function
-function addNumCart() {
-  const localStorageContent = localStorage.getItem('cart');
-  if (localStorageContent) {
-    let cartItemsArray = JSON.parse(localStorageContent);
-    let cartNum = document.getElementById('cartNum');
-    cartNum.innerHTML = cartItemsArray.length;
-  }
-}
-getProducts();
-addNumCart();
 
 
 

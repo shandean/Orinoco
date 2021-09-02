@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "bootstrap": "^5.0.2"
+  },
+  "devDependencies": {
+    "jasmine": "^3.9.0"
   }
 }
