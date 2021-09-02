@@ -122,3 +122,16 @@ addNumCart();
 
 displayCart();
 
+/**
+ * Function to calculate total cost of the items in the cart and return the total.
+ */
+ function updateCartTotal() {
+    let total = document.getElementById('totalCost');
+    let totalCost = 0;
+    for (let i = 0; i < cartItemsArray.length; i++) {
+        totalCost += cartItemsArray[i].price / 100;
+    }
+    total.innerHTML = '$' + totalCost;
+    sessionStorage.setItem('price', totalCost);
+}
+updateCartTotal();
