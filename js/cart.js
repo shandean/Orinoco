@@ -135,3 +135,32 @@ displayCart();
     sessionStorage.setItem('price', totalCost);
 }
 updateCartTotal();
+
+
+
+/**
+ * Send inforamtion from user to api go to confirmation page
+ * 
+ * @param {*} data 
+ */
+ function makeRequest(data) {
+    fetch('http://localhost:3000/api/teddies/order', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        orderId = data.orderId;
+        sessionStorage.setItem("orderId", orderId);
+        console.log(orderId);
+        location.replace('confirmation.html');
+
+    }).catch(function (err) {
+        console.log(err);
+    });
+}
+
+
