@@ -63,3 +63,62 @@ addNumCart();
         });
 })();
 
+/**
+ * This Function to display shopping cart
+ * The Name of the array/Colour and price.
+ * Creating an removeButton with a location reload function for the cart. 
+ *  @param 
+ */
+
+ 
+ function displayCart() {
+
+    let localStorageContent = localStorage.getItem('cart');
+    let cartItemsArray = JSON.parse(localStorageContent);
+    if (cartItemsArray) {
+        for (let i = 0; i < cartItemsArray.length; i++) {
+
+            let cart = document.getElementById('shoppingCart');
+            let cartItem = document.createElement('li');
+
+            cartItem.classList.add('cart-row', 'list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
+            cartItem.style.height = '75px';
+
+            let item = document.createElement('div');
+            item.classList.add('w-50');
+            item.innerHTML = '<p class="my-0 text-1">' + cartItemsArray[i].name + '</p> <small class="text-primary text-1">' + cartItemsArray[i].selectLenses + '</small>';
+
+            let cost = document.createElement('div');
+            cost.classList.add('w-25');
+            cost.style.marginTop = '12px';
+            cost.innerHTML = '<p class="cart-price text-bold">' + '$' + cartItemsArray[i].price / 100 + '</p>';
+
+            let removeButton = document.createElement('button');
+            removeButton.setAttribute('type', 'button');
+            removeButton.classList.add('btn', 'my-2', 'py-1', 'px-2', 'remove');
+            removeButton.setAttribute('aria-label', 'remove');
+            removeButton.innerHTML = '<i class="bi bi-dash-square"></i>';
+            removeButton.onclick = function removeItem() {
+                let cartItemsArray = JSON.parse(localStorage.getItem('cart'));
+                cartItemsArray.splice(i, 1);
+                localStorage.setItem('cart', JSON.stringify(cartItemsArray));
+                location.reload();
+            };
+
+            cart.appendChild(cartItem);
+            cartItem.appendChild(item);
+            cartItem.appendChild(cost);
+            cartItem.appendChild(removeButton);
+        }
+    }
+    else{
+
+        let cartItemsArray = JSON.parse(localStorage.getItem('cart'));
+        for (let i = 0; i <cartItems.length; i++) {
+        cart.push(cartItemsArray[i].prodId);
+     }
+    }
+}
+
+displayCart();
+
