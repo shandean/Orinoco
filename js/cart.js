@@ -74,9 +74,9 @@ addNumCart();
  function displayCart() {
 
     let localStorageContent = localStorage.getItem('cart');
-    let cartItemsArray = JSON.parse(localStorageContent);
-    if (cartItemsArray) {
-        for (let i = 0; i < cartItemsArray.length; i++) {
+    let cartArray = JSON.parse(localStorageContent);
+    if (cartArray) {
+        for (let i = 0; i <cartArray.length; i++) {
 
             let cart = document.getElementById('shoppingCart');
             let cartItem = document.createElement('li');
@@ -86,22 +86,22 @@ addNumCart();
 
             let item = document.createElement('div');
             item.classList.add('w-50');
-            item.innerHTML = '<p class="my-0 text-1">' + cartItemsArray[i].name + '</p> <small class="text-primary text-1">' + cartItemsArray[i].selectLenses + '</small>';
+            item.innerHTML = '<p class="my-0 text-1">' + cartArray[i].name + '</p> <small class="text-primary text-1">' + cartArray[i].selectLenses + '</small>';
 
             let cost = document.createElement('div');
             cost.classList.add('w-25');
             cost.style.marginTop = '12px';
-            cost.innerHTML = '<p class="cart-price text-bold">' + '$' + cartItemsArray[i].price / 100 + '</p>';
+            cost.innerHTML = '<p class="cart-price"><strong>' + '$' + cartArray[i].price / 100 + '</strong></p>';
 
             let removeButton = document.createElement('button');
             removeButton.setAttribute('type', 'button');
             removeButton.classList.add('btn', 'my-2', 'py-1', 'px-2', 'remove');
             removeButton.setAttribute('aria-label', 'remove');
-            removeButton.innerHTML = '<i class="bi bi-dash-square"></i>';
+            removeButton.innerHTML = '<i class="bi bi-dash-square close"></i>';
             removeButton.onclick = function removeItem() {
-                let cartItemsArray = JSON.parse(localStorage.getItem('cart'));
-                cartItemsArray.splice(i, 1);
-                localStorage.setItem('cart', JSON.stringify(cartItemsArray));
+                let cartArray = JSON.parse(localStorage.getItem('cart'));
+                cartArray.splice(i, 1);
+                localStorage.setItem('cart', JSON.stringify(cartArray));
                 location.reload();
             };
 
@@ -111,16 +111,13 @@ addNumCart();
             cartItem.appendChild(removeButton);
         }
     }
-    else{
-
-        let cartItemsArray = JSON.parse(localStorage.getItem('cart'));
-        for (let i = 0; i <cartItems.length; i++) {
-        cart.push(cartItemsArray[i].prodId);
-     }
-    }
+   
 }
 
 displayCart();
+
+
+
 
 /**
  * Function to calculate total cost of the items in the cart and return the total.
@@ -132,11 +129,11 @@ displayCart();
         totalCost += cartItemsArray[i].price / 100;
     }
     total.innerHTML = '$' + totalCost;
+
     sessionStorage.setItem('price', totalCost);
 }
+
 updateCartTotal();
-
-
 
 /**
  * Send inforamtion from user to api go to confirmation page
@@ -153,6 +150,7 @@ updateCartTotal();
     }).then(function (response) {
         return response.json();
     }).then(function (data) {
+        
         orderId = data.orderId;
         sessionStorage.setItem("orderId", orderId);
         console.log(orderId);
@@ -162,5 +160,4 @@ updateCartTotal();
         console.log(err);
     });
 }
-
 
