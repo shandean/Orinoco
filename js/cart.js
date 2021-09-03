@@ -69,8 +69,6 @@ addNumCart();
  * Creating an removeButton with a location reload function for the cart. 
  *  @param 
  */
-
- 
  function displayCart() {
 
     let localStorageContent = localStorage.getItem('cart');
@@ -117,6 +115,32 @@ addNumCart();
 displayCart();
 
 
+/* create a boolean to keep track of whether or not to push object
+let shouldPush = true;
+
+// use case - no items in cart - push object
+if (cartItemsArray.length === 0) {
+     cartArray.push(currentItem);
+     pushItem = false;
+     
+} else {
+     // use case - cart not empty - use for loop to check product against other objects in cart
+     // if this product and option already exist in cart don't push
+    for (let i = 0; i < cartItemsArray.length; i++) {
+        if (cartItemsArray.name === cartArray[i].name &&  cartItemsArray[i].selectLenses  ===  cartArray[i].selectLenses) {
+            shouldPush = false;
+        }
+      }
+}
+
+// use case - cart not empty, current product with same option not in cart - push object
+if (shouldPush) {
+     cartArray.push(currentItem);
+}
+cartItemsArray();
+cartArray();
+console.log(shouldPush)
+console.log(currentItem)
 
 
 /**

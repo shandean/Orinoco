@@ -1,7 +1,7 @@
 // DOM ELEMENT REFERENCES
 let thankYouName = document.querySelector('.thankYouName');
 let totalCost = document.getElementById('totalCost');
-let orderId = document.getElementById('orderId');
+let orderId = document.getElementById('orderID');
 
 // Shows total cost of order and return to home 
 thankYouName.innerHTML = ' ' + sessionStorage.getItem('firstName') + '!';
