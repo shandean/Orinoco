@@ -104,6 +104,7 @@ btnAddToCart.addEventListener('click', () => {
 
   addNumCart()
 });
+
 /**
  *  cart-function/ This function storage product informantion to cart.
 */
@@ -115,5 +116,6 @@ function addNumCart() {
     cartNum.innerHTML = cartItemsArray.length;
   }
 }
+
 addNumCart();
 init();

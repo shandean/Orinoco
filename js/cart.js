@@ -2,6 +2,7 @@ let orderId;
 
 let localStorageContent = localStorage.getItem('cart');
 let cartItemsArray = JSON.parse(localStorageContent);
+let cartItems = JSON.parse(localStorageContent);
 
 /**
  * Update cart number in navigation menu
@@ -32,29 +33,27 @@ addNumCart();
                     console.log('true');
                     let products = [];
                     let cartArray = JSON.parse(localStorage.getItem('cart'));
+                    console.log(cartArray);
                     for (let i = 0; i < cartArray.length; i++) {
-                        products.push(cartArray[i].id);
+                        products.push(cartArray[i].prodId);
                     }
                     let firstName = document.getElementById('firstName');
                     let lastName = document.getElementById('lastName');
                     let email = document.getElementById('email');
                     let address = document.getElementById('address');
-                    let country = document.getElementById('country');
                     let city = document.getElementById('city');
-                    let zip = document.getElementById('zip');
                     let contact = {
                         firstName: firstName.value,
                         lastName: lastName.value,
-                        email: email.value,
                         address: address.value,
-                        country: country.value,
                         city: city.value,
-                        zip: zip.value,
+                        email: email.value,
                     };
                     let data = {
                         contact: contact,
                         products: products,
                     };
+                    console.log(data);
                     makeRequest(data);
                     sessionStorage.setItem('firstName', contact.firstName);
                 }
@@ -160,7 +159,7 @@ console.log(currentItem)
 updateCartTotal();
 
 /**
- * Send inforamtion from user to api go to confirmation page
+ * Send information from user to API go to confirmation page
  * 
  * @param {*} data 
  */

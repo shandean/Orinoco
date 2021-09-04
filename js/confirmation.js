@@ -1,13 +1,15 @@
 // DOM ELEMENT REFERENCES
 let thankYouName = document.querySelector('.thankYouName');
 let totalCost = document.getElementById('totalCost');
-let orderId = document.getElementById('orderID');
+let orderNext = document.getElementById('orderId');
 
-// Shows total cost of order and return to home 
+// Showing total cost of order and return to home page
 thankYouName.innerHTML = ' ' + sessionStorage.getItem('firstName') + '!';
 totalCost.innerHTML = '$' + ' ' + sessionStorage.getItem('price');
-orderId.innerHTML = sessionStorage.getItem('orderId');
-document.getElementById('returnToHomePage').addEventListener('click', eraseSessionStorage);
+const holder = sessionStorage.getItem('orderId');
+orderNext.innerHTML = holder;
+console.log(holder);
+//document.getElementById('returnToHomePage').addEventListener('click', eraseSessionStorage);
 
 // remove the item from localStorage and sessionStorage
 function eraseSessionStorage() {
