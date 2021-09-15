@@ -36,7 +36,8 @@ fetch('http://localhost:3000/api/teddies/' + id)
     console.log(product);
     showProduct(data);
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err +'something went wrong'))
+   
   }
 /**
  * Creating an Product string for the specified data.
@@ -58,7 +59,7 @@ function showProduct(data) {
   // name product
   let nameElem = document.createElement('h1');
   nameElem.innerHTML = name;
-  titleproduct.appendChild(nameElem);
+  titleProduct.appendChild(nameElem);
 
   // price product
   priceElem.innerHTML = price + ` $`;
@@ -94,7 +95,7 @@ btnAddToCart.addEventListener('click', () => {
   cartItems.push(singleProduct);
   localStorage.setItem('cart', JSON.stringify(cartItems));
 
-  // add Toast/this function Notify User that Added items to cart
+  // this function Notify User that Added items to cart
   let confirme = document.getElementById('confirme-feedback');
   confirme.innerHTML = `Just Added Items To Cart.`;
   confirme.classList.add('confirme-feedback--visible');

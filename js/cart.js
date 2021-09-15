@@ -114,34 +114,6 @@ addNumCart();
 displayCart();
 
 
-/* create a boolean to keep track of whether or not to push object
-let shouldPush = true;
-
-// use case - no items in cart - push object
-if (cartItemsArray.length === 0) {
-     cartArray.push(currentItem);
-     pushItem = false;
-     
-} else {
-     // use case - cart not empty - use for loop to check product against other objects in cart
-     // if this product and option already exist in cart don't push
-    for (let i = 0; i < cartItemsArray.length; i++) {
-        if (cartItemsArray.name === cartArray[i].name &&  cartItemsArray[i].selectLenses  ===  cartArray[i].selectLenses) {
-            shouldPush = false;
-        }
-      }
-}
-
-// use case - cart not empty, current product with same option not in cart - push object
-if (shouldPush) {
-     cartArray.push(currentItem);
-}
-cartItemsArray();
-cartArray();
-console.log(shouldPush)
-console.log(currentItem)
-
-
 /**
  * Function to calculate total cost of the items in the cart and return the total.
  */
@@ -157,6 +129,45 @@ console.log(currentItem)
 }
 
 updateCartTotal();
+
+
+function getQuantity(index, value) {
+    let cartArray = JSON.parse(localStorage.getItem('cart'));
+    cartArray[index].quantity = parseInt(value);
+    localStorage.setItem('cart', JSON.stringify(cartArray));
+}
+
+function handleAdd(event) {
+    let shouldPush = false;
+
+    if (singleProduct.length === 0) {
+        singleProduct.push(cartItems);
+        shouldPush = true;
+    } else  {
+        // use case - cart not empty - use for loop to check product against other objects in cart
+        // if this product and option already exist in cart don't push
+        for (let i = 0; i < cartArray.length; i++) {
+             if (singleProduct.name === cartArray[i].name && singleProduct[i].selectLenses === cartArray[i].selectLenses) {
+            singleProduct[i].quantity = cartArray[i].quantity + cartItems.quantity;
+            shouldPush = true;
+            }
+         }
+         let singleProduct = {
+            imageUrl: product.imageUrl,
+            price: product.price,
+            name: product.name,
+            selectLenses: select.value,
+            quantity: product.quantity,
+         }
+   }
+
+} 
+
+
+
+
+
+
 
 /**
  * Send information from user to API go to confirmation page
