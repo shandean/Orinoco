@@ -4,7 +4,7 @@
 
 #### Backend ➡️ [Must clone and run to test website](https://github.com/OpenClassrooms-Student-Center/JWDP5)
 
-#### Website ➡️[hosted online on GitHub Pages](shandean.github.io/orinoco/)
+#### Website ➡️[hosted online on GitHub Pages](https://shandean.github.io/Orinoco/)
 
 #### DATA VALIDATION
 
