@@ -132,13 +132,14 @@ updateCartTotal();
 
 
 function getQuantity(index, value) {
-    let cartArray = JSON.parse(localStorage.getItem('cart'));
-    cartArray[index].quantity = parseInt(value);
-    localStorage.setItem('cart', JSON.stringify(cartArray));
+    let singleProduct = JSON.parse(localStorage.getItem('cart'));
+    singleProduct[index].quantity = parseInt(value);
+    localStorage.setItem('cart', JSON.stringify(singleProduct));
 }
 
 function handleAdd(event) {
     let shouldPush = false;
+    
 
     if (singleProduct.length === 0) {
         singleProduct.push(cartItems);
@@ -152,20 +153,10 @@ function handleAdd(event) {
             shouldPush = true;
             }
          }
-         let singleProduct = {
-            imageUrl: product.imageUrl,
-            price: product.price,
-            name: product.name,
-            selectLenses: select.value,
-            quantity: product.quantity,
-         }
+         
    }
 
 } 
-
-
-
-
 
 
 

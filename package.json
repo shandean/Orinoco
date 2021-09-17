@@ -3,6 +3,7 @@
     "bootstrap": "^5.0.2"
   },
   "devDependencies": {
-    "jasmine": "^3.9.0"
+    "jasmine": "^3.9.0",
+    "jasmine-browser-runner": "^0.8.0"
   }
 }
