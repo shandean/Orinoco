@@ -6,6 +6,7 @@ let wrapperImage = document.getElementById('cardImage');
 let titleProduct = document.getElementById('titleproduct');
 const btnAddToCart = document.getElementById('btnAddToCart');
 
+
 /**
  *  Init method is a predefined method to initialize an object after its creation
  */
@@ -13,7 +14,7 @@ async function init() {
   let productId = getProductId();
   fetchSingleProduct(productId);
 }
-
+init();
 /**
  * Return product id from query param
  */
@@ -28,17 +29,17 @@ return id;
  * Fetch Single Product by Id 
  * @param {Number} id 
  */
-async function fetchSingleProduct(id) {
-fetch('http://localhost:3000/api/teddies/' + id)
-    .then(response => response.json())
-    .then(data => {
-    product = data;
-    console.log(product);
-    showProduct(data);
-    })
-    .catch(err => console.log(err +'something went wrong'))
-   
-  }
+ async function fetchSingleProduct(id) {
+  fetch('http://localhost:3000/api/teddies/' + id)
+      .then(response => response.json())
+      .then(data => {
+       product =data;
+      console.log(product);
+      showProduct(data);
+      })
+      .catch(err => console.log(err +'something went wrong'))
+}     
+
 /**
  * Creating an Product string for the specified data.
  * @param 
@@ -71,11 +72,12 @@ function showProduct(data) {
     newOption.textContent = colors[i];
     select.appendChild(newOption);
   } 
-  
+  addNumCart()
 }
 
 // Put Product Data To The LocalStorage
 btnAddToCart.addEventListener('click', () => {
+
   let cartItems = [];
   const localStorageContent = localStorage.getItem('cart');
   if (localStorageContent === null) {
@@ -83,17 +85,19 @@ btnAddToCart.addEventListener('click', () => {
   } else {
     cartItems = JSON.parse(localStorageContent);
   }
-  let singleProduct = {
+  let cartArray = {
     imageUrl: product.imageUrl,
     price: product.price,
     name: product.name,
-    selectLenses: select.value,
+    selectLenses: select.value ,
     prodId: product._id,
+    quantity: 1
   };
 
   //push item_selector to cart
-  cartItems.push(singleProduct);
+  cartItems.push(cartArray);
   localStorage.setItem('cart', JSON.stringify(cartItems));
+
 
   // this function Notify User that Added items to cart
   let confirme = document.getElementById('confirme-feedback');
@@ -103,20 +107,13 @@ btnAddToCart.addEventListener('click', () => {
     confirme.classList.remove('confirme-feedback--visible');
   }, 3000);
 
-  addNumCart()
+  addNumCart();
 });
 
-/**
- *  cart-function/ This function storage product informantion to cart.
-*/
 function addNumCart() {
   const localStorageContent = localStorage.getItem('cart');
-  if (localStorageContent) {
-    let cartItemsArray = JSON.parse(localStorageContent);
-    let cartNum = document.getElementById('cartNum');
-    cartNum.innerHTML = cartItemsArray.length;
-  }
+  let cartItemsArray = JSON.parse(localStorageContent);
+  let cartNum = document.getElementById('cartNum');
+  cartNum.innerHTML = cartItemsArray.length;
 }
 
-addNumCart();
-init();
