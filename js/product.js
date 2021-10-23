@@ -14,7 +14,7 @@ async function init() {
   let productId = getProductId();
   fetchSingleProduct(productId);
 }
-init();
+
 /**
  * Return product id from query param
  */
@@ -85,7 +85,7 @@ btnAddToCart.addEventListener('click', () => {
   } else {
     cartItems = JSON.parse(localStorageContent);
   }
-  let cartArray = {
+  let cartProduct = {
     imageUrl: product.imageUrl,
     price: product.price,
     name: product.name,
@@ -94,9 +94,45 @@ btnAddToCart.addEventListener('click', () => {
     quantity: 1
   };
 
-  //push item_selector to cart
-  cartItems.push(cartArray);
-  localStorage.setItem('cart', JSON.stringify(cartItems));
+  let shouldPush = true;
+
+  // if cart is empty then shouldPush stays true
+  let cartArr = [];
+  if (localStorageContent === null) {
+     cartArr = [];
+  } else {
+     cartArr = JSON.parse(localStorageContent);
+  }
+  if (cartArr.length === 0) {
+    // nothing in cart we don't want to run the for loop
+  } else {
+    // check the current product against each item in cart
+    for (let i=0; i<cartArr.length; i++){
+      // if item is already in cart [name & opt same] don't push, incr qty
+      if (cartArr[i].name === cartProduct.name && 
+          cartArr[i].selectLenses === cartProduct.selectLenses) {
+        shouldPush = true; // don't push
+        // increase cart quantity by one
+        cartArr[i].quantity += 1;
+      } 
+      // else if item is not in cart [name not in cart or name & opt different] push
+      // we don't have to check for this directly because shouldPush will remain true
+    }
+  }
+  
+  // this is where we push the item IF AND ONLY IF shouldPush remains true
+  if (shouldPush) {
+    cartArr.push( cartProduct);
+  }
+  
+  // then we push the cart to localStorage and make sure the cartArr and localStorage are in sync
+  localStorage.setItem('cart', JSON.stringify(cartArr));
+  cart = localStorage.getItem('cart');
+  cartArr = JSON.parse(cart);
+   
+    //push item_selector to cart
+    cartItems.push(cartProduct);
+    localStorage.setItem('cart', JSON.stringify(cartItems));
 
 
   // this function Notify User that Added items to cart
@@ -108,7 +144,9 @@ btnAddToCart.addEventListener('click', () => {
   }, 3000);
 
   addNumCart();
+
 });
+
 
 function addNumCart() {
   const localStorageContent = localStorage.getItem('cart');
@@ -117,3 +155,4 @@ function addNumCart() {
   cartNum.innerHTML = cartItemsArray.length;
 }
 
+init();

@@ -11835,10 +11835,6 @@ label {
   margin: 10px;
 }
 
-.submit-order p {
-  padding-left: 15px;
-}
-
 .submit-order button {
   font-size: 0.8rem;
   margin-top: 10px;
@@ -11928,8 +11924,8 @@ h1, .h1 {
 }
 
 .emptyCart-img {
-  width: 146px;
-  height: 165px;
+  width: 406px;
+  height: 365px;
 }
 
 .emptyCart-img img {
@@ -11941,7 +11937,7 @@ h1, .h1 {
 }
 
 .emptyCart button a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -11952,5 +11948,10 @@ h1, .h1 {
 .emptyCart p {
   font-size: 18px;
   text-align: center;
+}
+
+.below-center {
+  margin: 0  150px;
+  text-overflow: ellipsis;
 }
 /*# sourceMappingURL=style.css.map */

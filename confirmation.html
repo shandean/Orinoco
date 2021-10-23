@@ -50,23 +50,22 @@
                 
             </div>
         </nav>
+        
         <main class="container-fluid">
-            <header class="jumbotron bg-light text-dark mt-5 p-5 shadow-sm" id="confirmationPageJumbotron">
+            <header class="jumbotron bg-light text-dark mt-5 p-3 shadow-sm" id="confirmationPageJumbotron">
                 <div class="container">
-                    <h1 class="display-5">Thank you for your purchase <ins class="thankYouName" style="text-decoration:none;"></ins></h1>
-                    <p class="lead">Below is your order ID. Please check your email for shipping info.</p>
-                </div>
+                    <h1 class="display-5">Thank you for your order!</h1>
+                    <p class="lead below-center ">Below is your order ID. Please check your email for shipping info.</p>
+                </div> 
             </header>
             <div class="container-fluid">
-              <div class="row text-center m-5">
-                <div class="col">
-                  <p class="lead">Total : <span id="totalCost"></span></p>
-                  <p class="lead">Confirmation Number : <span id="orderId"></span></p>
-                  <button type="button" id="returnToHomePage"
-                    class="btn btn-primary rounded align-self-center">Continue
-                  </button>
+                <div class="row text-center m-5">
+                    <div class="col">
+                        <p>Total cost of your order : <span id='total-price'></span></p>
+                        <p>Your order ID : <span id="orderID"></span></p>
+                        <button type="button" id='btnBack' class="btn btn-primary rounded align-self-center"> BACK TO STORE</button>
+                    </div>
                 </div>
-              </div>
             </div>
         </main>
         <!-- Core theme JS-->

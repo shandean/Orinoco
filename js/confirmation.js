@@ -1,20 +1,16 @@
+'use strict';
 // DOM ELEMENT REFERENCES
-let thankYouName = document.querySelector('.thankYouName');
-let totalCost = document.getElementById('totalCost');
-let orderNext = document.getElementById('orderId');
+let totalPrice = document.getElementById('total-price');
+let btnBackToStore = document.getElementById('btnBack')
+let orderId = document.getElementById('orderID')
 
-// Showing total cost of order and return to home page
-thankYouName.innerHTML = ' ' + sessionStorage.getItem('firstName') + '!';
-totalCost.innerHTML = '$' + ' ' + sessionStorage.getItem('price');
-const holder = sessionStorage.getItem('orderId');
-orderNext.innerHTML = holder;
-console.log(holder);
-document.getElementById('returnToHomePage').addEventListener('click', eraseSessionStorage);
+// Shows total cost of order and order ID
+totalPrice.innerHTML = sessionStorage.getItem('Total') + ' $';
+orderId.innerHTML = sessionStorage.getItem('orderId')
+
 // remove the item from localStorage and sessionStorage
-function eraseSessionStorage() {
-    sessionStorage.removeItem('orderId');
-    sessionStorage.removeItem('firstName');
-    sessionStorage.removeItem('price');
-    localStorage.removeItem('cart');
+btnBackToStore.addEventListener('click', () => {
+    sessionStorage.removeItem("orderId");
+    localStorage.removeItem("cart");
     location.replace('index.html');
-}
+})
