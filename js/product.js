@@ -77,14 +77,9 @@ function showProduct(data) {
 
 // Put Product Data To The LocalStorage
 btnAddToCart.addEventListener('click', () => {
+  let cartString = localStorage.getItem('cart') || '[]';
+  let cartArray = JSON.parse (cartString);
 
-  let cartItems = [];
-  const localStorageContent = localStorage.getItem('cart');
-  if (localStorageContent === null) {
-    cartItems = [];
-  } else {
-    cartItems = JSON.parse(localStorageContent);
-  }
   let cartProduct = {
     imageUrl: product.imageUrl,
     price: product.price,
@@ -97,23 +92,17 @@ btnAddToCart.addEventListener('click', () => {
   let shouldPush = true;
 
   // if cart is empty then shouldPush stays true
-  let cartArr = [];
-  if (localStorageContent === null) {
-     cartArr = [];
-  } else {
-     cartArr = JSON.parse(localStorageContent);
-  }
-  if (cartArr.length === 0) {
+  if (cartArray.length === 0) {
     // nothing in cart we don't want to run the for loop
   } else {
     // check the current product against each item in cart
-    for (let i=0; i<cartArr.length; i++){
+    for (let i=0; i<cartArray.length; i++){
       // if item is already in cart [name & opt same] don't push, incr qty
-      if (cartArr[i].name === cartProduct.name && 
-          cartArr[i].selectLenses === cartProduct.selectLenses) {
-        shouldPush = true; // don't push
+      if (cartArray[i].name === cartProduct.name && 
+          cartArray[i].selectLenses === cartProduct.selectLenses) {
+        shouldPush = false; // don't push
         // increase cart quantity by one
-        cartArr[i].quantity += 1;
+        cartArray[i].quantity += 1;
       } 
       // else if item is not in cart [name not in cart or name & opt different] push
       // we don't have to check for this directly because shouldPush will remain true
@@ -122,17 +111,13 @@ btnAddToCart.addEventListener('click', () => {
   
   // this is where we push the item IF AND ONLY IF shouldPush remains true
   if (shouldPush) {
-    cartArr.push( cartProduct);
+    cartArray.push( cartProduct);
   }
   
   // then we push the cart to localStorage and make sure the cartArr and localStorage are in sync
-  localStorage.setItem('cart', JSON.stringify(cartArr));
+  localStorage.setItem('cart', JSON.stringify(cartArray));
   cart = localStorage.getItem('cart');
-  cartArr = JSON.parse(cart);
-   
-    //push item_selector to cart
-    cartItems.push(cartProduct);
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+  cartArray = JSON.parse(cart);
 
 
   // this function Notify User that Added items to cart
