@@ -97,7 +97,7 @@ btnAddToCart.addEventListener('click', () => {
   } else {
     // check the current product against each item in cart
     for (let i=0; i<cartArray.length; i++){
-      // if item is already in cart [name & opt same] don't push, incr qty
+      // if item is already in cart [name & select or the same] don't push, increase qty
       if (cartArray[i].name === cartProduct.name && 
           cartArray[i].selectLenses === cartProduct.selectLenses) {
         shouldPush = false; // don't push
@@ -114,7 +114,7 @@ btnAddToCart.addEventListener('click', () => {
     cartArray.push( cartProduct);
   }
   
-  // then we push the cart to localStorage and make sure the cartArr and localStorage are in sync
+  // then we push the cart to localStorage and make sure the cartArray and localStorage are in sync
   localStorage.setItem('cart', JSON.stringify(cartArray));
   cart = localStorage.getItem('cart');
   cartArray = JSON.parse(cart);
@@ -134,8 +134,8 @@ btnAddToCart.addEventListener('click', () => {
 
 
 function addNumCart() {
-  const localStorageContent = localStorage.getItem('cart');
-  let cartItemsArray = JSON.parse(localStorageContent);
+  const cartString = localStorage.getItem('cart');
+  let cartItemsArray = JSON.parse(cartString);
   let cartNum = document.getElementById('cartNum');
   cartNum.innerHTML = cartItemsArray.length;
 }

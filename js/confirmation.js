@@ -5,7 +5,7 @@ let btnBackToStore = document.getElementById('btnBack')
 let orderId = document.getElementById('orderID')
 
 // Shows total cost of order and order ID
-totalPrice.innerHTML = sessionStorage.getItem('Total') + ' $';
+totalPrice.innerHTML = sessionStorage.getItem('Total');
 orderId.innerHTML = sessionStorage.getItem('orderId')
 
 // remove the item from localStorage and sessionStorage

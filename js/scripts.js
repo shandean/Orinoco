@@ -47,9 +47,9 @@ async function getProducts() {
  * Cart-function This will show tote/products in cart 
  **/ 
 function addNumCart() {
-  const localStorageContent = localStorage.getItem('cart');
-  if (localStorageContent) {
-    let cartItemsArray = JSON.parse(localStorageContent);
+  const cartString = localStorage.getItem('cart');
+  if (cartString) {
+    let cartItemsArray = JSON.parse(cartString);
     let cartNum = document.getElementById('cartNum');
     cartNum.innerHTML = cartItemsArray.length;
   }

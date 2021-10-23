@@ -26,7 +26,7 @@ function init() {
 function showCartItems() {
     const cartItemsWrapper = document.getElementById('cart_items');
     let cartArray = JSON.parse(localStorage.getItem('cart'));
-    // console.log(cartItemsWrapper);
+    
   
     // Empty current items
     emptyCart(cartItemsWrapper)
@@ -53,11 +53,11 @@ function showCartItems() {
         // Get each cart item values
         nameCell.innerHTML = cartArray[i].name;
         lenseCell.innerHTML = cartArray[i].selectLenses;
-        priceCell.innerHTML = (priceNum * cartArray[i].quantity) + ' $';
+        priceCell.innerHTML =  ' $' + (priceNum * cartArray[i].quantity);
         imgCell.setAttribute('src', cartArray[i].imageUrl);
          
 
-         //remove buttons/qunatity
+         //remove buttons/ input that increase or decrease qunatity of item
         btnRemove.innerHTML = `<button class="btn-del" id='remove' onclick='removeItem(${i})'>X</button>`;
         qunatity.innerHTML = `<input type="number" id="quantity" name="quantity" min="1" value ="${cartArray[i].quantity}" class="quantity" onclick="changeQuantity(${i}, event.target.value)">`;
   
@@ -102,7 +102,7 @@ function calculateTotalCartPrice() {
 
 // If no cart products added, "total" element won't exist. Check first before setting the value
 if (total) {
-    total.innerHTML = totalCartPrice + " $";
+    total.innerHTML =   " $" + totalCartPrice;
     sessionStorage.setItem('Total', JSON.stringify(totalCartPrice));
 }
 }
@@ -114,8 +114,9 @@ function removeItem(index) {
  
  // update localstorage
  localStorage.setItem('cart', JSON.stringify(cartArray));
+ // update cart data
  showCartItems();
-
+ // update cart total price
  calculateTotalCartPrice();
 }
 
@@ -126,8 +127,8 @@ submitButton.addEventListener('click', ($event) => {
     let products = [];
 
 //get id prod and push it in array
-let cartArray = JSON.parse(localStorage.getItem('cart'));
-for (let i = 0; i < cartArray.length; i++) {
+ let cartArray = JSON.parse(localStorage.getItem('cart'));
+ for (let i = 0; i < cartArray.length; i++) {
     products.push(cartArray[i].prodId);
 }
 
@@ -144,7 +145,7 @@ for (let i = 0; i < cartArray.length; i++) {
     products: products,
 }
 
-// console.log(data);
+
  if (isFirstNameValid && isLastNameValid && isEmailValid && isAddressValid && isCityValid) {
     makeRequest(data);
 }
@@ -287,15 +288,10 @@ function emptyCart(cartItemsWrapper) {
 
  // Show empty cart page if no products exist
  let container = document.getElementById('container');
- let cartArray = [];
- const localStorageContent = localStorage.getItem('cart');
- if (localStorageContent === null) {
-    cartArray = [];
- } else {
-    cartArray = JSON.parse(localStorageContent);
- }
+ let cartString = localStorage.getItem('cart') || '[]';
+ let cartArray = JSON.parse (cartString);
 
- if (cartArray.length === 0 || localStorageContent === null) {
+ if (cartArray.length === 0 || cartString === 0) {
     container.innerHTML = `<div class="emptyCart">
     <div class="emptyCart-img">
     <img src="image/empty-bear.jpg" alt="empty cart">
